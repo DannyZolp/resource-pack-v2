@@ -9,7 +9,7 @@ jobs:
       - name: Zip on Ubuntu
         uses: nguyenquyhy/zip-release@v0.3.0
         with:
-          path: ${{ github.workspace }}
+          workingDirectory: ${{ github.workspace }}
       - name: upload zip to release
         uses: softprops/action-gh-release@v1
         if: ${{startsWith(github.ref, 'refs/tags/') }}
