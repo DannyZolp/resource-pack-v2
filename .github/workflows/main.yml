@@ -6,10 +6,10 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Zip on Ubuntu
-        uses: nguyenquyhy/zip-release@v0.3.0
-        with:
-          workingDirectory: ${{ github.workspace }}
+      - name: Install zip
+        run: apt install -y zip
+      - name: Zip Pack
+        run: zip -r release.zip ${{ github.workspace }}
       - name: upload zip to release
         uses: softprops/action-gh-release@v1
         if: ${{startsWith(github.ref, 'refs/tags/') }}
